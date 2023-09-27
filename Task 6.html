@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+    <!-- Add Bootstrap CSS link or your own custom CSS styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .error {
+            color: red;
+        }
+        .form-group {
+            text-align: left;
+        }
+        .btn-danger {
+            background-color: red;
+            width: 100%;
+        }
+        .form-control.error {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+       
+        <form id="registrationForm" style="margin-top: 5%;">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+                <span id="nameError" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <span id="emailError" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <span id="passwordError" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label for="hobbies">Hobbies:</label>
+                <input type="text" class="form-control" id="hobbies" name="hobbies">
+            </div>
+            <button type="button" class="btn btn-danger" id="submitButton">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to validate the form
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const passwordInput = document.getElementById("password");
+
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const passwordError = document.getElementById("passwordError");
+
+            let valid = true;
+
+            // Name validation
+            if (name === "") {
+                nameError.textContent = "Name is required";
+                valid = false;
+                nameInput.classList.add("error");
+            } else {
+                nameError.textContent = "";
+                nameInput.classList.remove("error");
+            }
+
+            // Email validation
+            if (email === "") {
+                emailError.textContent = "Email is required";
+                valid = false;
+                emailInput.classList.add("error");
+            } else {
+                emailError.textContent = "";
+                emailInput.classList.remove("error");
+            }
+
+            // Password validation
+            if (password === "") {
+                passwordError.textContent = "Password is required";
+                valid = false;
+                passwordInput.classList.add("error");
+            } else {
+                passwordError.textContent = "";
+                passwordInput.classList.remove("error");
+            }
+
+            return valid;
+        }
+
+        // Submit button click event
+        document.getElementById("submitButton").addEventListener("click", function() {
+            if (validateForm()) {
+                // Form is valid, you can submit the data or take other actions here
+                alert("Form submitted successfully!");
+            }
+        });
+    </script>
+</body>
+</html>

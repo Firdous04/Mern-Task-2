@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 10</title>
+</head>
+<body>
+    <h1>Current Date and Time</h1>
+
+    <button id="showDateButton">Show Date</button>
+    <div id="dateOutput"></div>
+    <br>
+
+    <button id="showTimeButton">Show Time</button>
+    <div id="timeOutput"></div>
+
+    <script>
+        const dateOutputElement = document.getElementById('dateOutput');
+        const timeOutputElement = document.getElementById('timeOutput');
+        const showDateButton = document.getElementById('showDateButton');
+        const showTimeButton = document.getElementById('showTimeButton');
+
+        // Function to display the current date in the format "7/March/2023"
+        function showDate() {
+            const currentDate = new Date();
+            const formattedDate = `${currentDate.getDate()}/${currentDate.toLocaleString('default', { month: 'long' })}/${currentDate.getFullYear()}`;
+            displayContent(dateOutputElement, formattedDate);
+        }
+
+        // Function to display the current time in the specified format
+        function showTime() {
+            const currentDate = new Date();
+            const formattedTime = currentDate.toString();
+            displayContent(timeOutputElement, formattedTime);
+        }
+
+        // Function to display content below the respective button
+        function displayContent(outputElement, content) {
+            const contentElement = document.createElement('p');
+            contentElement.textContent = content;
+            outputElement.appendChild(contentElement);
+        }
+
+        showDateButton.addEventListener('click', showDate);
+        showTimeButton.addEventListener('click', showTime);
+    </script>
+</body>
+</html>
